@@ -30,13 +30,13 @@ namespace HumanResourceMachine.Controllers
         };
 
         [HttpGet]
-        public IActionResult GetAllPeople()
+        public IActionResult Get()
         {
             return Ok(people);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetHumanById(int id)
+        public IActionResult Get(int id)
         {
             Human result = people.Find(h => h.Id == id);
 
@@ -44,31 +44,31 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpPost]
-        public IActionResult PostNewHuman(Human human)
+        public IActionResult Post(Human human)
         {
             people.Add(human);
 
-            return Ok();
+            return Ok(people);
         }
 
         [HttpPut]
-        public IActionResult PutHuman(Human request)
+        public IActionResult Put(Human request)
         {
             Human human = people.Find(h => h.Id == request.Id);
             human.Name = request.Name;
             human.Surname = request.Surname;
             human.Patronymic = request.Patronymic;
 
-            return Ok();
+            return Ok(people);
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteHumanById(int id)
+        public IActionResult Delete(int id)
         {
             Human target = people.Find(h => h.Id == id);
             people.Remove(target);
 
-            return Ok();
+            return Ok(people);
         }
     }
 }
