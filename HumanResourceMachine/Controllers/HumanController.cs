@@ -48,7 +48,7 @@ namespace HumanResourceMachine.Controllers
         {
             people.Add(human);
 
-            return Ok(people);
+            return Ok();
         }
 
         [HttpPut]
@@ -59,7 +59,7 @@ namespace HumanResourceMachine.Controllers
             human.Surname = request.Surname;
             human.Patronymic = request.Patronymic;
 
-            return Ok(people);
+            return Ok();
         }
 
         [HttpDelete("{id}")]
@@ -68,7 +68,7 @@ namespace HumanResourceMachine.Controllers
             Human target = people.Find(h => h.Id == id);
             people.Remove(target);
 
-            return Ok(people);
+            return Ok();
         }
     }
 }
