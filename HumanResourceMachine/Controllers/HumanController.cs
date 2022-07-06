@@ -19,13 +19,13 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Human> GetAll()
+        public IEnumerable<Human> GetAllHumans()
         {
             return _context.People.ToList();
         }
 
         [HttpGet("{id}")]
-        public Human Get([FromRoute] int id)
+        public Human GetHumanById([FromRoute] int id)
         {
             var result = _context.People.Find(id);
 
@@ -33,21 +33,21 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpPost]
-        public void Post(Human human)
+        public void AddHuman(Human human)
         {
             _context.People.Add(human);
             _context.SaveChanges();
         }
 
         [HttpPut]
-        public void Put(Human request)    
+        public void UpdateHuman(Human human)    
         {
-            _context.Update(request); 
+            _context.Update(human); 
             _context.SaveChanges();
         }
 
         [HttpDelete("{id}")]
-        public void Delete([FromRoute] int id)
+        public void DeleteById([FromRoute] int id)
         {
             var target = _context.People.Find(id);
             _context.People.Remove(target); 
