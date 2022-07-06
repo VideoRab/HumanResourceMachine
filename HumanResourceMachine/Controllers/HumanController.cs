@@ -25,7 +25,7 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Human>> GetHumanById(int id)
+        public async Task<ActionResult<Human>> GetHumanById([FromRoute] int id)
         {
             var result = await _context.People.FindAsync(id);
 
@@ -33,7 +33,7 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> PostNewHuman(Human human)
+        public async Task<ActionResult> PostHuman(Human human)
         {
             _context.People.Add(human);
             await _context.SaveChangesAsync();
@@ -56,7 +56,7 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteHumanById(int id)
+        public async Task<ActionResult> DeleteHumanById([FromRoute] int id)
         {
             var target = await _context.People.FindAsync(id);
             _context.People.Remove(target);
