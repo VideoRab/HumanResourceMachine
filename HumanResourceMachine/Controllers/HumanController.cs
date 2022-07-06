@@ -19,45 +19,39 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Human>>> GetAll()
+        public IEnumerable<Human> GetAll()
         {
-            return Ok(await _context.People.ToListAsync());
+            return _context.People.ToList();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Human>> Get([FromRoute] int id)
+        public Human Get([FromRoute] int id)
         {
-            var result = await _context.People.FindAsync(id);
+            var result = _context.People.Find(id);
 
-            return Ok(result);
+            return result;
         }
 
         [HttpPost]
-        public async Task<ActionResult> Post(Human human)
+        public void Post(Human human)
         {
             _context.People.Add(human);
-            await _context.SaveChangesAsync();
-
-            return Ok();
+            _context.SaveChanges();
         }
 
         [HttpPut]
-        public async Task<ActionResult> Put(Human request)    
+        public void Put(Human request)    
         {
-            _context.Update(request);
-            await _context.SaveChangesAsync();
-
-            return Ok();
+            _context.Update(request); 
+            _context.SaveChanges();
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete([FromRoute] int id)
+        public void Delete([FromRoute] int id)
         {
-            var target = await _context.People.FindAsync(id);
-            _context.People.Remove(target);
-            await _context.SaveChangesAsync();
-
-            return Ok();
+            var target = _context.People.Find(id);
+            _context.People.Remove(target); 
+            _context.SaveChanges();
         }
     }
 }
