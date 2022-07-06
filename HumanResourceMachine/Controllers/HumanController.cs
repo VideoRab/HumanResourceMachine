@@ -47,7 +47,7 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpDelete("{id}")]
-        public void DeleteById([FromRoute] int id)
+        public void DeleteHumanById([FromRoute] int id)
         {
             var target = _context.People.Find(id);
             _context.People.Remove(target); 
