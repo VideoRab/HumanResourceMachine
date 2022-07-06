@@ -1,6 +1,7 @@
-﻿using System.Net;
+﻿using HumanResourceMachine.Context;
 using HumanResourceMachine.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,63 +11,56 @@ namespace HumanResourceMachine.Controllers
     [ApiController]
     public class HumanController : ControllerBase
     {
-        // Temporary database
-        private static List<Human> people = new List<Human>()
+        private readonly HRMContext _context;
+
+        public HumanController(HRMContext context)
         {
-            new Human
-            {
-                Id = 1,
-                Name = "Ilya",
-                Surname = "Safonov",
-                Patronymic = "Alexandrovich"
-            },
-            new Human
-            {
-                Id = 2,
-                Name = "SomeName",
-                Surname = "SomeSurname",
-                Patronymic = "SomePatronymic"
-            }
-        };
+            _context = context;
+        }
 
         [HttpGet]
-        public IActionResult GetAllPeople()
+        public async Task<ActionResult<IEnumerable<Human>>> GetAllPeople()
         {
-            return Ok(people);
+            return Ok(await _context.People.ToListAsync());
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetHumanById(int id)
+        public async Task<ActionResult<Human>> GetHumanById(int id)
         {
-            Human result = people.Find(h => h.Id == id);
+            var result = await _context.People.FindAsync(id);
 
             return Ok(result);
         }
 
         [HttpPost]
-        public IActionResult PostNewHuman(Human human)
+        public async Task<ActionResult> PostNewHuman(Human human)
         {
-            people.Add(human);
+            _context.People.Add(human);
+            await _context.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpPut]
-        public IActionResult PutHuman(Human request)
+        public async Task<ActionResult> PutHuman(Human request)    
         {
-            Human human = people.Find(h => h.Id == request.Id);
+            var human = await _context.People.FindAsync(request.Id);
+
             human.Name = request.Name;
             human.Surname = request.Surname;
             human.Patronymic = request.Patronymic;
+
+            await _context.SaveChangesAsync();
 
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteHumanById(int id)
+        public async Task<ActionResult> DeleteHumanById(int id)
         {
-            Human target = people.Find(h => h.Id == id);
-            people.Remove(target);
+            var target = await _context.People.FindAsync(id);
+            _context.People.Remove(target);
+            await _context.SaveChangesAsync();
 
             return Ok();
         }
