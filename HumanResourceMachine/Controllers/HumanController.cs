@@ -44,12 +44,7 @@ namespace HumanResourceMachine.Controllers
         [HttpPut]
         public async Task<ActionResult> Put(Human request)    
         {
-            var human = await _context.People.FindAsync(request.Id);
-
-            human.Name = request.Name;
-            human.Surname = request.Surname;
-            human.Patronymic = request.Patronymic;
-
+            _context.Update(request);
             await _context.SaveChangesAsync();
 
             return Ok();
