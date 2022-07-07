@@ -1,4 +1,5 @@
 using HumanResourceMachine.Context;
+using HumanResourceMachine.Middleware;
 using Microsoft.EntityFrameworkCore;
 
 namespace HumanResourceMachine
@@ -27,6 +28,8 @@ namespace HumanResourceMachine
             }
 
             app.UseHttpsRedirection();
+
+            app.UseMiddleware<ExceptionHandlerMiddleware>();
 
             app.UseAuthorization();
 
