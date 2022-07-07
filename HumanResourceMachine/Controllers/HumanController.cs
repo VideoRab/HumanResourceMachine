@@ -1,7 +1,6 @@
 ﻿using HumanResourceMachine.Context;
 using HumanResourceMachine.Entities;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -28,6 +27,10 @@ namespace HumanResourceMachine.Controllers
         public Human GetHumanById([FromRoute] int id)
         {
             var result = _context.People.Find(id);
+            if (result is null)
+            {
+                throw new ArgumentNullException("Object doesn't exist.", nameof(result));
+            }
 
             return result;
         }
@@ -50,6 +53,11 @@ namespace HumanResourceMachine.Controllers
         public void DeleteHumanById([FromRoute] int id)
         {
             var target = _context.People.Find(id);
+            if (target is null)
+            {
+                throw new ArgumentNullException("Object doesn't exist.", nameof(target));
+            }
+
             _context.People.Remove(target); 
             _context.SaveChanges();
         }
