@@ -1,8 +1,8 @@
 ﻿using HumanResourceMachine.Entities;
 
-namespace HumanResourceMachine.Interfaces
+namespace HumanResourceMachine.Interfaces.Repository
 {
-    public interface IBusinessLogicService
+    public interface IHumanRepository
     {
         IEnumerable<Human> GetAllHumans();
         Human GetHumanById(int id);

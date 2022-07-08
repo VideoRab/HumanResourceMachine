@@ -1,15 +1,15 @@
 ﻿using HumanResourceMachine.Context;
 using HumanResourceMachine.Entities;
-using HumanResourceMachine.Interfaces;
+using HumanResourceMachine.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace HumanResourceMachine.Services
+namespace HumanResourceMachine.Repositories
 {
-    public class BusinessLogicService : IBusinessLogicService
+    public class HumanRepository : IHumanRepository
     {
         private readonly HRMContext _context;
 
-        public BusinessLogicService(HRMContext context)
+        public HumanRepository(HRMContext context)
         {
             _context = context;
         }
@@ -21,13 +21,7 @@ namespace HumanResourceMachine.Services
 
         public Human GetHumanById(int id)
         {
-            var result = _context.People.Find(id);
-            if (result is null)
-            {
-                throw new ArgumentNullException("Object doesn't exist.", nameof(result));
-            }
-
-            return result;
+            return _context.People.Find(id);
         }
 
         public void AddHuman(Human human)
@@ -45,12 +39,7 @@ namespace HumanResourceMachine.Services
         public void DeleteHumanById(int id)
         {
             var target = _context.People.Find(id);
-            if (target is null)
-            {
-                throw new ArgumentNullException("Object doesn't exist.", nameof(target));
-            }
-
-            _context.People.Remove(target);
+            _context.People.Remove(target!);
             _context.SaveChanges();
         }
     }
