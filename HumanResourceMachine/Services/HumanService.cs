@@ -20,7 +20,13 @@ namespace HumanResourceMachine.Services
 
         public Human GetHumanById(int id)
         {
-            return _repository.GetHumanById(id);
+            var human = _repository.GetHumanById(id);
+            if (human is null)
+            {
+                throw new ArgumentNullException("Object doesn't exist.", nameof(human));
+            }
+
+            return human;
         }
 
         public void AddHuman(Human human)
@@ -35,6 +41,12 @@ namespace HumanResourceMachine.Services
 
         public void DeleteHumanById(int id)
         {
+            var target = _repository.GetHumanById(id);
+            if (target is null)
+            {
+                throw new ArgumentNullException("Object doesn't exist.", nameof(target));
+            }
+
             _repository.DeleteHumanById(id);
         }
     }
