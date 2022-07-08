@@ -2,7 +2,7 @@
 
 namespace HumanResourceMachine.Interfaces
 {
-    public interface IBusinessLogicService
+    public interface IHumanRepository
     {
         IEnumerable<Human> GetAllHumans();
         Human GetHumanById(int id);

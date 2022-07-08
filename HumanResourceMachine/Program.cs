@@ -15,7 +15,8 @@ namespace HumanResourceMachine
             // Add services to the container.
             string connection = builder.Configuration.GetConnectionString("DefaultConnection");
             builder.Services.AddDbContext<HRMContext>(options => options.UseSqlServer(connection));
-            builder.Services.AddTransient<IBusinessLogicService, BusinessLogicService>();
+            builder.Services.AddScoped<IHumanService, HumanService>();
+            builder.Services.AddScoped<IHumanRepository, HumanRepository>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

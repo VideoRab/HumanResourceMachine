@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HumanResourceMachine.Services
 {
-    public class BusinessLogicService : IBusinessLogicService
+    public class HumanRepository : IHumanRepository
     {
         private readonly HRMContext _context;
 
-        public BusinessLogicService(HRMContext context)
+        public HumanRepository(HRMContext context)
         {
             _context = context;
         }

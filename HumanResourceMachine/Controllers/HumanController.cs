@@ -11,9 +11,9 @@ namespace HumanResourceMachine.Controllers
     [ApiController]
     public class HumanController : ControllerBase
     {
-        private readonly IBusinessLogicService _service;
+        private readonly IHumanService _service;
 
-        public HumanController(IBusinessLogicService service)
+        public HumanController(IHumanService service)
         {
             _service = service;
         }
