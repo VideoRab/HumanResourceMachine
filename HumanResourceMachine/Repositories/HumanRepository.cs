@@ -1,9 +1,9 @@
 ﻿using HumanResourceMachine.Context;
 using HumanResourceMachine.Entities;
-using HumanResourceMachine.Interfaces;
+using HumanResourceMachine.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace HumanResourceMachine.Services
+namespace HumanResourceMachine.Repositories
 {
     public class HumanRepository : IHumanRepository
     {

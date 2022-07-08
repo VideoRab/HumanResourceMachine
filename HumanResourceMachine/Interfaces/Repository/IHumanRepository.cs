@@ -1,6 +1,6 @@
 ﻿using HumanResourceMachine.Entities;
 
-namespace HumanResourceMachine.Interfaces
+namespace HumanResourceMachine.Interfaces.Repository
 {
     public interface IHumanRepository
     {

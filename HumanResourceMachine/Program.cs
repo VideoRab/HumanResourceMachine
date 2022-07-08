@@ -1,6 +1,8 @@
 using HumanResourceMachine.Context;
-using HumanResourceMachine.Interfaces;
+using HumanResourceMachine.Interfaces.Repository;
+using HumanResourceMachine.Interfaces.Service;
 using HumanResourceMachine.Middleware;
+using HumanResourceMachine.Repositories;
 using HumanResourceMachine.Services;
 using Microsoft.EntityFrameworkCore;
 

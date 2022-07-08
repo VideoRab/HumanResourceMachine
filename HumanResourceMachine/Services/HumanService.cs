@@ -1,7 +1,6 @@
-﻿using HumanResourceMachine.Context;
-using HumanResourceMachine.Entities;
-using HumanResourceMachine.Interfaces;
-using Microsoft.EntityFrameworkCore;
+﻿using HumanResourceMachine.Entities;
+using HumanResourceMachine.Interfaces.Repository;
+using HumanResourceMachine.Interfaces.Service;
 
 namespace HumanResourceMachine.Services
 {
