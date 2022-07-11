@@ -21,7 +21,7 @@ namespace HumanResourceMachine
             builder.Services.AddDbContext<HRMContext>(options => options.UseSqlServer(connection));
             builder.Services.AddScoped<IHumanService, HumanService>();
             builder.Services.AddScoped<IHumanRepository, HumanRepository>();
-            builder.Services.AddScoped<IMyOwnMapper, MyOwnMapper>();
+            builder.Services.AddScoped<IHumanMapper, HumanMapper>();
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

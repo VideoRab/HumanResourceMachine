@@ -13,9 +13,9 @@ namespace HumanResourceMachine.Controllers
     public class HumanController : ControllerBase
     {
         private readonly IHumanService _service;
-        private readonly IMyOwnMapper _mapper;
+        private readonly IHumanMapper _mapper;
 
-        public HumanController(IHumanService service, IMyOwnMapper mapper)
+        public HumanController(IHumanService service, IHumanMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -25,10 +25,13 @@ namespace HumanResourceMachine.Controllers
         public IEnumerable<HumanViewModel> GetAllHumans()
         {
             var humans = _service.GetAllHumans();
+            List<HumanViewModel> result = new List<HumanViewModel>();
             foreach (var human in humans)
             {
-                yield return _mapper.MappingToHumanVM(human);
+                result.Add(_mapper.MappingToHumanVM(human));
             }
+
+            return result;
         }
 
         [HttpGet("{id}")]

@@ -4,7 +4,7 @@ using HumanResourceMachine.ViewModels;
 
 namespace HumanResourceMachine.Mapper
 {
-    public class MyOwnMapper : IMyOwnMapper
+    public class HumanMapper : IHumanMapper
     {
         public Human MappingToHuman(HumanViewModel humanVM)
         {
