@@ -22,9 +22,10 @@ namespace HumanResourceMachine.Controllers
         public IEnumerable<HumanViewModel> GetAllHumans()
         {
             var humans = _service.GetAllHumans();
-            var result = MappingToHumanVM(humans);
-
-            return result;
+            foreach (var human in humans)
+            {
+                yield return MappingToHumanVM(human);
+            }
         }
 
         [HttpGet("{id}")]
@@ -37,14 +38,16 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpPost]
-        public void AddHuman(Human human)
+        public void AddHuman(HumanViewModel humanVM)
         {
+            var human = MappingToHuman(humanVM);
             _service.AddHuman(human);
         }
 
         [HttpPut]
-        public void UpdateHuman(Human human)    
+        public void UpdateHuman(HumanViewModel humanVM)
         {
+            var human = MappingToHuman(humanVM);
             _service.UpdateHuman(human);
         }
 
@@ -54,29 +57,27 @@ namespace HumanResourceMachine.Controllers
             _service.DeleteHumanById(id);
         }
 
-        private List<HumanViewModel> MappingToHumanVM(IEnumerable<Human> humans)
-        {
-            var result = new List<HumanViewModel>();
-            foreach (var human in humans)
-            {
-                result.Add(new HumanViewModel()
-                {
-                    Name = human.Name,
-                    Surname = human.Surname,
-                    Patronymic = human.Patronymic
-                });
-            }
-
-            return result;
-        }
-
         private HumanViewModel MappingToHumanVM(Human human)
         {
             var result = new HumanViewModel()
             {
+                Id = human.Id,
                 Name = human.Name,
                 Surname = human.Surname,
                 Patronymic = human.Patronymic
+            };
+
+            return result;
+        }
+
+        private Human MappingToHuman(HumanViewModel humanVM)
+        {
+            var result = new Human()
+            {
+                Id = humanVM.Id,
+                Name = humanVM.Name,
+                Surname = humanVM.Surname,
+                Patronymic = humanVM.Patronymic
             };
 
             return result;
