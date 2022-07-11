@@ -1,4 +1,5 @@
-﻿using HumanResourceMachine.Entities;
+﻿using AutoMapper;
+using HumanResourceMachine.Entities;
 using HumanResourceMachine.Interfaces.Mapper;
 using HumanResourceMachine.Interfaces.Service;
 using HumanResourceMachine.ViewModels;
@@ -13,9 +14,9 @@ namespace HumanResourceMachine.Controllers
     public class HumanController : ControllerBase
     {
         private readonly IHumanService _service;
-        private readonly IHumanMapper _mapper;
+        private readonly IMapper _mapper;
 
-        public HumanController(IHumanService service, IHumanMapper mapper)
+        public HumanController(IHumanService service, IMapper mapper)
         {
             _service = service;
             _mapper = mapper;
@@ -25,11 +26,7 @@ namespace HumanResourceMachine.Controllers
         public IEnumerable<HumanViewModel> GetAllHumans()
         {
             var humans = _service.GetAllHumans();
-            List<HumanViewModel> result = new List<HumanViewModel>();
-            foreach (var human in humans)
-            {
-                result.Add(_mapper.MappingToHumanVM(human));
-            }
+            var result = _mapper.Map<IEnumerable<HumanViewModel>>(humans);
 
             return result;
         }
@@ -38,7 +35,7 @@ namespace HumanResourceMachine.Controllers
         public HumanViewModel GetHumanById([FromRoute] int id)
         {
             var human = _service.GetHumanById(id);
-            var result = _mapper.MappingToHumanVM(human);
+            var result = _mapper.Map<HumanViewModel>(human);
 
             return result;
         }
@@ -46,14 +43,14 @@ namespace HumanResourceMachine.Controllers
         [HttpPost]
         public void AddHuman(HumanViewModel humanVM)
         {
-            var human = _mapper.MappingToHuman(humanVM);
+            var human = _mapper.Map<Human>(humanVM);
             _service.AddHuman(human);
         }
 
         [HttpPut]
         public void UpdateHuman(HumanViewModel humanVM)
         {
-            var human = _mapper.MappingToHuman(humanVM);
+            var human = _mapper.Map<Human>(humanVM);
             _service.UpdateHuman(human);
         }
 
