@@ -1,4 +1,5 @@
 ﻿using HumanResourceMachine.Entities;
+using HumanResourceMachine.Interfaces.Mapper;
 using HumanResourceMachine.Interfaces.Service;
 using HumanResourceMachine.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +13,12 @@ namespace HumanResourceMachine.Controllers
     public class HumanController : ControllerBase
     {
         private readonly IHumanService _service;
+        private readonly IMyOwnMapper _mapper;
 
-        public HumanController(IHumanService service)
+        public HumanController(IHumanService service, IMyOwnMapper mapper)
         {
             _service = service;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -24,7 +27,7 @@ namespace HumanResourceMachine.Controllers
             var humans = _service.GetAllHumans();
             foreach (var human in humans)
             {
-                yield return MappingToHumanVM(human);
+                yield return _mapper.MappingToHumanVM(human);
             }
         }
 
@@ -32,7 +35,7 @@ namespace HumanResourceMachine.Controllers
         public HumanViewModel GetHumanById([FromRoute] int id)
         {
             var human = _service.GetHumanById(id);
-            var result = MappingToHumanVM(human);
+            var result = _mapper.MappingToHumanVM(human);
 
             return result;
         }
@@ -40,14 +43,14 @@ namespace HumanResourceMachine.Controllers
         [HttpPost]
         public void AddHuman(HumanViewModel humanVM)
         {
-            var human = MappingToHuman(humanVM);
+            var human = _mapper.MappingToHuman(humanVM);
             _service.AddHuman(human);
         }
 
         [HttpPut]
         public void UpdateHuman(HumanViewModel humanVM)
         {
-            var human = MappingToHuman(humanVM);
+            var human = _mapper.MappingToHuman(humanVM);
             _service.UpdateHuman(human);
         }
 
@@ -55,32 +58,6 @@ namespace HumanResourceMachine.Controllers
         public void DeleteHumanById([FromRoute] int id)
         {
             _service.DeleteHumanById(id);
-        }
-
-        private HumanViewModel MappingToHumanVM(Human human)
-        {
-            var result = new HumanViewModel()
-            {
-                Id = human.Id,
-                Name = human.Name,
-                Surname = human.Surname,
-                Patronymic = human.Patronymic
-            };
-
-            return result;
-        }
-
-        private Human MappingToHuman(HumanViewModel humanVM)
-        {
-            var result = new Human()
-            {
-                Id = humanVM.Id,
-                Name = humanVM.Name,
-                Surname = humanVM.Surname,
-                Patronymic = humanVM.Patronymic
-            };
-
-            return result;
         }
     }
 }
