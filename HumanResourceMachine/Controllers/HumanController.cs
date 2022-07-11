@@ -1,5 +1,6 @@
 ﻿using HumanResourceMachine.Entities;
 using HumanResourceMachine.Interfaces.Service;
+using HumanResourceMachine.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -18,15 +19,37 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Human> GetAllHumans()
+        public IEnumerable<HumanViewModel> GetAllHumans()
         {
-            return _service.GetAllHumans();
+            var humans = _service.GetAllHumans();
+            List<HumanViewModel> result = new List<HumanViewModel>();
+            foreach (var human in humans)
+            {
+                result.Add(
+                    new HumanViewModel()
+                    {
+                        Name = human.Name,
+                        Surname = human.Surname,
+                        Patronymic = human.Patronymic
+                    }
+                );
+            }
+
+            return result;
         }
 
         [HttpGet("{id}")]
-        public Human GetHumanById([FromRoute] int id)
+        public HumanViewModel GetHumanById([FromRoute] int id)
         {
-            return _service.GetHumanById(id);
+            var human = _service.GetHumanById(id);
+            var result = new HumanViewModel()
+            {
+                Name = human.Name,
+                Surname = human.Surname,
+                Patronymic = human.Patronymic
+            };
+
+            return result;
         }
 
         [HttpPost]
