@@ -22,18 +22,7 @@ namespace HumanResourceMachine.Controllers
         public IEnumerable<HumanViewModel> GetAllHumans()
         {
             var humans = _service.GetAllHumans();
-            List<HumanViewModel> result = new List<HumanViewModel>();
-            foreach (var human in humans)
-            {
-                result.Add(
-                    new HumanViewModel()
-                    {
-                        Name = human.Name,
-                        Surname = human.Surname,
-                        Patronymic = human.Patronymic
-                    }
-                );
-            }
+            var result = MappingToHumanVM(humans);
 
             return result;
         }
@@ -42,12 +31,7 @@ namespace HumanResourceMachine.Controllers
         public HumanViewModel GetHumanById([FromRoute] int id)
         {
             var human = _service.GetHumanById(id);
-            var result = new HumanViewModel()
-            {
-                Name = human.Name,
-                Surname = human.Surname,
-                Patronymic = human.Patronymic
-            };
+            var result = MappingToHumanVM(human);
 
             return result;
         }
@@ -68,6 +52,34 @@ namespace HumanResourceMachine.Controllers
         public void DeleteHumanById([FromRoute] int id)
         {
             _service.DeleteHumanById(id);
+        }
+
+        private List<HumanViewModel> MappingToHumanVM(IEnumerable<Human> humans)
+        {
+            var result = new List<HumanViewModel>();
+            foreach (var human in humans)
+            {
+                result.Add(new HumanViewModel()
+                {
+                    Name = human.Name,
+                    Surname = human.Surname,
+                    Patronymic = human.Patronymic
+                });
+            }
+
+            return result;
+        }
+
+        private HumanViewModel MappingToHumanVM(Human human)
+        {
+            var result = new HumanViewModel()
+            {
+                Name = human.Name,
+                Surname = human.Surname,
+                Patronymic = human.Patronymic
+            };
+
+            return result;
         }
     }
 }
