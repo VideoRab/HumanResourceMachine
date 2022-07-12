@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
-using HumanResourceMachine.Entities;
-using HumanResourceMachine.Interfaces.Repository;
-using HumanResourceMachine.Interfaces.Service;
-using HumanResourceMachine.Models;
+using HRM.BLL.Entities;
+using HRM.BLL.Interfaces.Repository;
+using HRM.BLL.Interfaces.Service;
+using HRM.BLL.Models;
 
-namespace HumanResourceMachine.Services
+namespace HRM.BLL.Services
 {
     public class HumanService : IHumanService
     {

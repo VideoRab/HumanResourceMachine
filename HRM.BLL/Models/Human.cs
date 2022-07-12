@@ -1,4 +1,4 @@
-﻿namespace HumanResourceMachine.Models
+﻿namespace HRM.BLL.Models
 {
     public class Human
     {

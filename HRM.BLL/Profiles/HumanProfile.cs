@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using HumanResourceMachine.Entities;
-using HumanResourceMachine.Models;
+using HRM.BLL.Entities;
+using HRM.BLL.Models;
 
-namespace HumanResourceMachine.Profiles
+namespace HRM.BLL.Profiles
 {
     public class HumanProfile : Profile
     {

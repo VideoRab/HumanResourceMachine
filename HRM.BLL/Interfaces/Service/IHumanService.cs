@@ -1,6 +1,6 @@
-﻿using HumanResourceMachine.Models;
+﻿using HRM.BLL.Models;
 
-namespace HumanResourceMachine.Interfaces.Service
+namespace HRM.BLL.Interfaces.Service
 {
     public interface IHumanService
     {
