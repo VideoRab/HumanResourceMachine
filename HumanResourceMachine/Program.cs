@@ -1,9 +1,9 @@
-using HumanResourceMachine.Context;
-using HumanResourceMachine.Interfaces.Repository;
-using HumanResourceMachine.Interfaces.Service;
+using HRM.BLL.Context;
+using HRM.BLL.Interfaces.Repository;
+using HRM.BLL.Interfaces.Service;
+using HRM.BLL.Repositories;
+using HRM.BLL.Services;
 using HumanResourceMachine.Middleware;
-using HumanResourceMachine.Repositories;
-using HumanResourceMachine.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace HumanResourceMachine

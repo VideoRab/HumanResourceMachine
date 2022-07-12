@@ -1,6 +1,6 @@
-﻿using HumanResourceMachine.Entities;
+﻿using HRM.BLL.Entities;
 
-namespace HumanResourceMachine.Interfaces.Repository
+namespace HRM.BLL.Interfaces.Repository
 {
     public interface IHumanRepository
     {

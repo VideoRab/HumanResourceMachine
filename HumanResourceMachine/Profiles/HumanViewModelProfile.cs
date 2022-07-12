@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using HumanResourceMachine.Models;
+using HRM.BLL.Models;
 using HumanResourceMachine.ViewModels;
 
 namespace HumanResourceMachine.Profiles

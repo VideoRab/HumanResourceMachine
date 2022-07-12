@@ -1,9 +1,9 @@
-﻿using HumanResourceMachine.Context;
-using HumanResourceMachine.Entities;
-using HumanResourceMachine.Interfaces.Repository;
+﻿using HRM.BLL.Context;
+using HRM.BLL.Entities;
+using HRM.BLL.Interfaces.Repository;
 using Microsoft.EntityFrameworkCore;
 
-namespace HumanResourceMachine.Repositories
+namespace HRM.BLL.Repositories
 {
     public class HumanRepository : IHumanRepository
     {

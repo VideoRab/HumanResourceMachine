@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using HumanResourceMachine.Interfaces.Service;
-using HumanResourceMachine.Models;
+using HRM.BLL.Interfaces.Service;
+using HRM.BLL.Models;
 using HumanResourceMachine.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 

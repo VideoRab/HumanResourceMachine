@@ -1,4 +1,4 @@
-﻿namespace HumanResourceMachine.Entities
+﻿namespace HRM.BLL.Entities
 {
     public class HumanEntity
     {

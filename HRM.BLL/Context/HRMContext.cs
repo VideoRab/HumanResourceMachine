@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using HumanResourceMachine.Entities;
+using HRM.BLL.Entities;
 
-namespace HumanResourceMachine.Context
+namespace HRM.BLL.Context
 {
     public class HRMContext : DbContext
     {
