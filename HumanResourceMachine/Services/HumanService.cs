@@ -13,12 +13,12 @@ namespace HumanResourceMachine.Services
             _repository = repository;
         }
 
-        public IEnumerable<Human> GetAllHumans()
+        public IEnumerable<HumanEntity> GetAllHumans()
         {
             return _repository.GetAllHumans();
         }
 
-        public Human GetHumanById(int id)
+        public HumanEntity GetHumanById(int id)
         {
             var human = _repository.GetHumanById(id);
             if (human is null)
@@ -29,12 +29,12 @@ namespace HumanResourceMachine.Services
             return human;
         }
 
-        public void AddHuman(Human human)
+        public void AddHuman(HumanEntity human)
         {
             _repository.AddHuman(human);
         }
 
-        public void UpdateHuman(Human human)
+        public void UpdateHuman(HumanEntity human)
         {
             _repository.UpdateHuman(human);
         }

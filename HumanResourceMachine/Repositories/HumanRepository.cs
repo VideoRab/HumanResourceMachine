@@ -14,23 +14,23 @@ namespace HumanResourceMachine.Repositories
             _context = context;
         }
 
-        public IEnumerable<Human> GetAllHumans()
+        public IEnumerable<HumanEntity> GetAllHumans()
         {
             return _context.People.ToList();
         }
 
-        public Human GetHumanById(int id)
+        public HumanEntity GetHumanById(int id)
         {
             return _context.People.Find(id);
         }
 
-        public void AddHuman(Human human)
+        public void AddHuman(HumanEntity human)
         {
             _context.People.Add(human);
             _context.SaveChanges();
         }
 
-        public void UpdateHuman(Human human)
+        public void UpdateHuman(HumanEntity human)
         {
             _context.Entry(human).State = EntityState.Modified;
             _context.SaveChanges();

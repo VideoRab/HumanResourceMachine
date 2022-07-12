@@ -8,7 +8,7 @@ namespace HumanResourceMachine.Profiles
     {
         public HumanProfile()
         {
-            CreateMap<Human, HumanViewModel>().ReverseMap();
+            CreateMap<HumanEntity, HumanViewModel>().ReverseMap();
         }
     }
 }

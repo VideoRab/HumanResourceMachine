@@ -4,10 +4,10 @@ namespace HumanResourceMachine.Interfaces.Service
 {
     public interface IHumanService
     {
-        IEnumerable<Human> GetAllHumans();
-        Human GetHumanById(int id);
-        void AddHuman(Human human);
-        void UpdateHuman(Human human);
+        IEnumerable<HumanEntity> GetAllHumans();
+        HumanEntity GetHumanById(int id);
+        void AddHuman(HumanEntity human);
+        void UpdateHuman(HumanEntity human);
         void DeleteHumanById(int id);
     }
 }

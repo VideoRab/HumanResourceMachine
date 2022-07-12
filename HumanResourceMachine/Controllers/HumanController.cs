@@ -42,14 +42,14 @@ namespace HumanResourceMachine.Controllers
         [HttpPost]
         public void AddHuman(HumanViewModel humanVM)
         {
-            var human = _mapper.Map<Human>(humanVM);
+            var human = _mapper.Map<HumanEntity>(humanVM);
             _service.AddHuman(human);
         }
 
         [HttpPut]
         public void UpdateHuman(HumanViewModel humanVM)
         {
-            var human = _mapper.Map<Human>(humanVM);
+            var human = _mapper.Map<HumanEntity>(humanVM);
             _service.UpdateHuman(human);
         }
 
