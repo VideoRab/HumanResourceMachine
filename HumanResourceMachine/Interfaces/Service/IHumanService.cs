@@ -1,4 +1,4 @@
-﻿using HumanResourceMachine.Entities;
+﻿using HumanResourceMachine.Models;
 
 namespace HumanResourceMachine.Interfaces.Service
 {

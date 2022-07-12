@@ -1,21 +1,28 @@
-﻿using HumanResourceMachine.Entities;
+﻿using AutoMapper;
+using HumanResourceMachine.Entities;
 using HumanResourceMachine.Interfaces.Repository;
 using HumanResourceMachine.Interfaces.Service;
+using HumanResourceMachine.Models;
 
 namespace HumanResourceMachine.Services
 {
     public class HumanService : IHumanService
     {
         private readonly IHumanRepository _repository;
+        private readonly IMapper _mapper;
 
-        public HumanService(IHumanRepository repository)
+        public HumanService(IHumanRepository repository, IMapper mapper)
         {
             _repository = repository;
+            _mapper = mapper;
         }
 
         public IEnumerable<Human> GetAllHumans()
         {
-            return _repository.GetAllHumans();
+            var humans = _repository.GetAllHumans();
+            var result = _mapper.Map<IEnumerable<Human>>(humans);
+
+            return result;
         }
 
         public Human GetHumanById(int id)
@@ -26,17 +33,21 @@ namespace HumanResourceMachine.Services
                 throw new ArgumentNullException("Object doesn't exist.", nameof(human));
             }
 
-            return human;
+            var result = _mapper.Map<Human>(human);
+
+            return result;
         }
 
         public void AddHuman(Human human)
         {
-            _repository.AddHuman(human);
+            var humanEntity = _mapper.Map<HumanEntity>(human);
+            _repository.AddHuman(humanEntity);
         }
 
         public void UpdateHuman(Human human)
         {
-            _repository.UpdateHuman(human);
+            var humanEntity = _mapper.Map<HumanEntity>(human);
+            _repository.UpdateHuman(humanEntity);
         }
 
         public void DeleteHumanById(int id)

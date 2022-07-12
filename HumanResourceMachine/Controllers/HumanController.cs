@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using HumanResourceMachine.Entities;
 using HumanResourceMachine.Interfaces.Service;
+using HumanResourceMachine.Models;
 using HumanResourceMachine.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
