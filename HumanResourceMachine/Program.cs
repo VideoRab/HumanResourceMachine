@@ -1,7 +1,5 @@
 using HRM.DAL.Context;
 using HRM.BLL.Interfaces;
-using HRM.DAL.Interfaces.Repository;
-using HRM.DAL.Repositories;
 using HRM.BLL.Services;
 using HumanResourceMachine.Middleware;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +13,8 @@ namespace HumanResourceMachine
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            string connection = builder.Configuration.GetConnectionString("DefaultConnection");
-            builder.Services.AddDbContext<HRMContext>(options => options.UseSqlServer(connection));
-            builder.Services.AddScoped<IHumanService, HumanService>();
-            builder.Services.AddScoped<IHumanRepository, HumanRepository>();
+            builder.Services.AddDatabase(builder.Configuration)
+                            .AddServices();
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
