@@ -5,7 +5,9 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HumanResourceMachine", "HumanResourceMachine.csproj", "{C728D56E-23F3-472E-B37D-93C545291E6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRM.BLL", "..\HRM.BLL\HRM.BLL.csproj", "{DFA9A954-C950-41B2-BAEE-96F68E9F8034}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HRM.BLL", "..\HRM.BLL\HRM.BLL.csproj", "{DFA9A954-C950-41B2-BAEE-96F68E9F8034}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRM.DAL", "..\HRM.DAL\HRM.DAL.csproj", "{7EBB4899-B695-48F9-93F9-66945A27B270}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{DFA9A954-C950-41B2-BAEE-96F68E9F8034}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFA9A954-C950-41B2-BAEE-96F68E9F8034}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFA9A954-C950-41B2-BAEE-96F68E9F8034}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EBB4899-B695-48F9-93F9-66945A27B270}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EBB4899-B695-48F9-93F9-66945A27B270}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EBB4899-B695-48F9-93F9-66945A27B270}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EBB4899-B695-48F9-93F9-66945A27B270}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using HRM.BLL.Interfaces.Service;
+using HRM.BLL.Interfaces;
 using HRM.BLL.Models;
 using HumanResourceMachine.ViewModels;
 using Microsoft.AspNetCore.Mvc;

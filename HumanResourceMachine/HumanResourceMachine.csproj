@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HRM.BLL\HRM.BLL.csproj" />
+    <ProjectReference Include="..\HRM.DAL\HRM.DAL.csproj" />
   </ItemGroup>
 
 </Project>

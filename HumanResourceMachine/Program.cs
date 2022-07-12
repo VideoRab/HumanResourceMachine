@@ -1,7 +1,7 @@
-using HRM.BLL.Context;
-using HRM.BLL.Interfaces.Repository;
-using HRM.BLL.Interfaces.Service;
-using HRM.BLL.Repositories;
+using HRM.DAL.Context;
+using HRM.BLL.Interfaces;
+using HRM.DAL.Interfaces.Repository;
+using HRM.DAL.Repositories;
 using HRM.BLL.Services;
 using HumanResourceMachine.Middleware;
 using Microsoft.EntityFrameworkCore;
