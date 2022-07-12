@@ -1,8 +1,6 @@
 using HumanResourceMachine.Context;
-using HumanResourceMachine.Interfaces.Mapper;
 using HumanResourceMachine.Interfaces.Repository;
 using HumanResourceMachine.Interfaces.Service;
-using HumanResourceMachine.Mapper;
 using HumanResourceMachine.Middleware;
 using HumanResourceMachine.Repositories;
 using HumanResourceMachine.Services;
