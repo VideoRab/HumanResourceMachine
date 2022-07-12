@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using HRM.BLL.Entities;
-using HRM.BLL.Interfaces.Repository;
-using HRM.BLL.Interfaces.Service;
+using HRM.DAL.Entities;
+using HRM.BLL.Interfaces;
+using HRM.DAL.Interfaces.Repository;
 using HRM.BLL.Models;
 
 namespace HRM.BLL.Services

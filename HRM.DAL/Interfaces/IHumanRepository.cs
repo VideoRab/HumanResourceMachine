@@ -1,6 +1,6 @@
-﻿using HRM.BLL.Entities;
+﻿using HRM.DAL.Entities;
 
-namespace HRM.BLL.Interfaces.Repository
+namespace HRM.DAL.Interfaces.Repository
 {
     public interface IHumanRepository
     {

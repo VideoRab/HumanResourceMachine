@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using HRM.BLL.Entities;
+using HRM.DAL.Entities;
 using HRM.BLL.Models;
 
 namespace HRM.BLL.Profiles

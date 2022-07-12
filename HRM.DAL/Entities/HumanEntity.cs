@@ -1,4 +1,4 @@
-﻿namespace HRM.BLL.Entities
+﻿namespace HRM.DAL.Entities
 {
     public class HumanEntity
     {

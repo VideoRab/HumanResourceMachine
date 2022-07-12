@@ -1,6 +1,6 @@
 ﻿using HRM.BLL.Models;
 
-namespace HRM.BLL.Interfaces.Service
+namespace HRM.BLL.Interfaces
 {
     public interface IHumanService
     {
