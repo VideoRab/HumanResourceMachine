@@ -1,13 +1,13 @@
-﻿using HumanResourceMachine.Entities;
+﻿using HumanResourceMachine.Models;
 
 namespace HumanResourceMachine.Interfaces.Service
 {
     public interface IHumanService
     {
-        IEnumerable<HumanEntity> GetAllHumans();
-        HumanEntity GetHumanById(int id);
-        void AddHuman(HumanEntity human);
-        void UpdateHuman(HumanEntity human);
+        IEnumerable<Human> GetAllHumans();
+        Human GetHumanById(int id);
+        void AddHuman(Human human);
+        void UpdateHuman(Human human);
         void DeleteHumanById(int id);
     }
 }

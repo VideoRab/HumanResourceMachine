@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using HumanResourceMachine.Entities;
 using HumanResourceMachine.Interfaces.Service;
+using HumanResourceMachine.Models;
 using HumanResourceMachine.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -42,14 +42,14 @@ namespace HumanResourceMachine.Controllers
         [HttpPost]
         public void AddHuman(HumanViewModel humanVM)
         {
-            var human = _mapper.Map<HumanEntity>(humanVM);
+            var human = _mapper.Map<Human>(humanVM);
             _service.AddHuman(human);
         }
 
         [HttpPut]
         public void UpdateHuman(HumanViewModel humanVM)
         {
-            var human = _mapper.Map<HumanEntity>(humanVM);
+            var human = _mapper.Map<Human>(humanVM);
             _service.UpdateHuman(human);
         }
 

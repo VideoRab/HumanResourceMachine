@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using HumanResourceMachine.Entities;
-using HumanResourceMachine.ViewModels;
+using HumanResourceMachine.Models;
 
 namespace HumanResourceMachine.Profiles
 {
@@ -8,7 +8,7 @@ namespace HumanResourceMachine.Profiles
     {
         public HumanProfile()
         {
-            CreateMap<HumanEntity, HumanViewModel>().ReverseMap();
+            CreateMap<Human, HumanEntity>().ReverseMap();
         }
     }
 }
