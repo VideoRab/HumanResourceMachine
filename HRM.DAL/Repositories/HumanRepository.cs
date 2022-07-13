@@ -19,8 +19,13 @@ namespace HRM.DAL.Repositories
             return await _context.People.ToListAsync(token);
         }
 
-        public async Task<HumanEntity> GetHumanById(int id)
+        public async Task<HumanEntity> GetHumanById(int id, CancellationToken token)
         {
+            if (token.IsCancellationRequested)
+            {
+                token.ThrowIfCancellationRequested();
+            }
+
             return (await _context.People.FindAsync(id))!;
         }
 
