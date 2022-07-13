@@ -22,41 +22,41 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<HumanViewModel> GetAllHumans()
+        public async Task<IEnumerable<HumanViewModel>> GetAllHumans(CancellationToken token)
         {
-            var humans = _service.GetAllHumans();
+            var humans = await _service.GetAllHumans(token);
             var result = _mapper.Map<IEnumerable<HumanViewModel>>(humans);
 
             return result;
         }
 
         [HttpGet("{id}")]
-        public HumanViewModel GetHumanById([FromRoute] int id)
+        public async Task<HumanViewModel> GetHumanById([FromRoute] int id, CancellationToken token)
         {
-            var human = _service.GetHumanById(id);
+            var human = await _service.GetHumanById(id, token);
             var result = _mapper.Map<HumanViewModel>(human);
 
             return result;
         }
 
         [HttpPost]
-        public void AddHuman(HumanViewModel humanVM)
+        public async Task AddHuman(HumanViewModel humanVM, CancellationToken token)
         {
             var human = _mapper.Map<Human>(humanVM);
-            _service.AddHuman(human);
+            await _service.AddHuman(human, token);
         }
 
         [HttpPut]
-        public void UpdateHuman(HumanViewModel humanVM)
+        public async Task UpdateHuman(HumanViewModel humanVM, CancellationToken token)
         {
             var human = _mapper.Map<Human>(humanVM);
-            _service.UpdateHuman(human);
+            await _service.UpdateHuman(human, token);
         }
 
         [HttpDelete("{id}")]
-        public void DeleteHumanById([FromRoute] int id)
+        public async Task DeleteHumanById([FromRoute] int id, CancellationToken token)
         {
-            _service.DeleteHumanById(id);
+            await _service.DeleteHumanById(id, token);
         }
     }
 }

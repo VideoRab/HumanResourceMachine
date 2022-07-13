@@ -14,33 +14,33 @@ namespace HRM.DAL.Repositories
             _context = context;
         }
 
-        public IEnumerable<HumanEntity> GetAllHumans()
+        public async Task<IEnumerable<HumanEntity>> GetAllHumans(CancellationToken token)
         {
-            return _context.People.ToList();
+            return await _context.People.ToListAsync(token);
         }
 
-        public HumanEntity GetHumanById(int id)
+        public async Task<HumanEntity> GetHumanById(int id, CancellationToken token)
         {
-            return _context.People.Find(id);
+            return (await _context.People.FindAsync(id, token))!;
         }
 
-        public void AddHuman(HumanEntity human)
+        public async Task AddHuman(HumanEntity human, CancellationToken token)
         {
-            _context.People.Add(human);
-            _context.SaveChanges();
+            await _context.People.AddAsync(human, token);
+            await _context.SaveChangesAsync(token);
         }
 
-        public void UpdateHuman(HumanEntity human)
+        public async Task UpdateHuman(HumanEntity human, CancellationToken token)
         {
             _context.Entry(human).State = EntityState.Modified;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync(token);
         }
 
-        public void DeleteHumanById(int id)
+        public async Task DeleteHumanById(int id, CancellationToken token)
         {
-            var target = _context.People.Find(id);
+            var target = await _context.People.FindAsync(id, token);
             _context.People.Remove(target!);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync(token);
         }
     }
 }
