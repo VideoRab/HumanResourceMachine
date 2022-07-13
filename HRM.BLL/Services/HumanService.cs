@@ -27,11 +27,6 @@ namespace HRM.BLL.Services
 
         public async Task<Human> GetHumanById(int id, CancellationToken token)
         {
-            if (token.IsCancellationRequested)
-            {
-                token.ThrowIfCancellationRequested();
-            }
-
             var human = await _repository.GetHumanById(id, token);
             if (human is null)
             {
