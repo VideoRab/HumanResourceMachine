@@ -31,9 +31,9 @@ namespace HumanResourceMachine.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<HumanViewModel> GetHumanById([FromRoute] int id, CancellationToken token)
+        public async Task<HumanViewModel> GetHumanById([FromRoute] int id)
         {
-            var human = await _service.GetHumanById(id, token);
+            var human = await _service.GetHumanById(id);
             var result = _mapper.Map<HumanViewModel>(human);
 
             return result;

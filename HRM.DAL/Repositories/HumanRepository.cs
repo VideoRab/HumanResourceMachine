@@ -19,9 +19,9 @@ namespace HRM.DAL.Repositories
             return await _context.People.ToListAsync(token);
         }
 
-        public async Task<HumanEntity> GetHumanById(int id, CancellationToken token)
+        public async Task<HumanEntity> GetHumanById(int id)
         {
-            return (await _context.People.FindAsync(id, token))!;
+            return (await _context.People.FindAsync(id))!;
         }
 
         public async Task AddHuman(HumanEntity human, CancellationToken token)
@@ -38,7 +38,7 @@ namespace HRM.DAL.Repositories
 
         public async Task DeleteHumanById(int id, CancellationToken token)
         {
-            var target = await _context.People.FindAsync(id, token);
+            var target = await _context.People.FindAsync(id);
             _context.People.Remove(target!);
             await _context.SaveChangesAsync(token);
         }

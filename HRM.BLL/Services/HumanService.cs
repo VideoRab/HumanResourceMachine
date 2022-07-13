@@ -25,9 +25,9 @@ namespace HRM.BLL.Services
             return result;
         }
 
-        public async Task<Human> GetHumanById(int id, CancellationToken token)
+        public async Task<Human> GetHumanById(int id)
         {
-            var human = await _repository.GetHumanById(id, token);
+            var human = await _repository.GetHumanById(id);
             if (human is null)
             {
                 throw new ArgumentNullException("Object doesn't exist.", nameof(human));
@@ -52,7 +52,7 @@ namespace HRM.BLL.Services
 
         public async Task DeleteHumanById(int id, CancellationToken token)
         {
-            var target = await _repository.GetHumanById(id, token);
+            var target = await _repository.GetHumanById(id);
             if (target is null)
             {
                 throw new ArgumentNullException("Object doesn't exist.", nameof(target));
