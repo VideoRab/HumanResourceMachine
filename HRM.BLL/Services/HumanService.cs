@@ -17,17 +17,17 @@ namespace HRM.BLL.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<Human> GetAllHumans()
+        public async Task<IEnumerable<Human>> GetAllHumans(CancellationToken token)
         {
-            var humans = _repository.GetAllHumans();
+            var humans = await _repository.GetAllHumans(token);
             var result = _mapper.Map<IEnumerable<Human>>(humans);
 
             return result;
         }
 
-        public Human GetHumanById(int id)
+        public async Task<Human> GetHumanById(int id, CancellationToken token)
         {
-            var human = _repository.GetHumanById(id);
+            var human = await _repository.GetHumanById(id, token);
             if (human is null)
             {
                 throw new ArgumentNullException("Object doesn't exist.", nameof(human));
@@ -38,27 +38,27 @@ namespace HRM.BLL.Services
             return result;
         }
 
-        public void AddHuman(Human human)
+        public async Task AddHuman(Human human, CancellationToken token)
         {
             var humanEntity = _mapper.Map<HumanEntity>(human);
-            _repository.AddHuman(humanEntity);
+            await _repository.AddHuman(humanEntity, token);
         }
 
-        public void UpdateHuman(Human human)
+        public async Task UpdateHuman(Human human, CancellationToken token)
         {
             var humanEntity = _mapper.Map<HumanEntity>(human);
-            _repository.UpdateHuman(humanEntity);
+            await _repository.UpdateHuman(humanEntity, token);
         }
 
-        public void DeleteHumanById(int id)
+        public async Task DeleteHumanById(int id, CancellationToken token)
         {
-            var target = _repository.GetHumanById(id);
+            var target = await _repository.GetHumanById(id, token);
             if (target is null)
             {
                 throw new ArgumentNullException("Object doesn't exist.", nameof(target));
             }
 
-            _repository.DeleteHumanById(id);
+            await _repository.DeleteHumanById(id, token);
         }
     }
 }
