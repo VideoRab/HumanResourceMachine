@@ -1,6 +1,4 @@
-﻿using HRM.BLL.Models;
-
-namespace HumanResourceMachine.ViewModels
+﻿namespace HumanResourceMachine.ViewModels
 {
     public class CompanyViewModel
     {
