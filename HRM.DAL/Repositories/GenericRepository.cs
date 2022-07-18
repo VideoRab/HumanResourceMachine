@@ -40,8 +40,8 @@ namespace HRM.DAL.Repositories
 
         public async Task DeleteById(int id, CancellationToken token)
         {
-            var target = await _context.People.FindAsync(new object[] { id }, token);
-            _context.People.Remove(target!);
+            var target = await _dbSet.FindAsync(new object[] { id }, token);
+            _dbSet.Remove(target!);
             await _context.SaveChangesAsync(token);
         }
     }
