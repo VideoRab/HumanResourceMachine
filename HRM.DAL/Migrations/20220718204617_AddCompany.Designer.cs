@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HRM.DAL.Migrations
 {
     [DbContext(typeof(HRMContext))]
-    [Migration("20220718192129_Company")]
-    partial class Company
+    [Migration("20220718204617_AddCompany")]
+    partial class AddCompany
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
