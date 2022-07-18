@@ -12,5 +12,12 @@ namespace HRM.DAL.Context
         {
             Database.EnsureCreated();
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<HumanEntity>()
+                .HasOne(h => h.Company)
+                .WithMany(c => c.Employees);
+        }
     }
 }

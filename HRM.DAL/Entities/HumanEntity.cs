@@ -1,6 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace HRM.DAL.Entities
+﻿namespace HRM.DAL.Entities
 {
     public class HumanEntity
     {
@@ -8,6 +6,6 @@ namespace HRM.DAL.Entities
         public string Name { get; set; }
         public string Surname { get; set; }
         public string Patronymic { get; set; }
-        public int CompanyId { get; set; }
+        public CompanyEntity Company { get; set; }
     }
 }
