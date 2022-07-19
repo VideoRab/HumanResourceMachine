@@ -1,5 +1,6 @@
 ﻿using HRM.DAL.Context;
-using HRM.DAL.Interfaces.Repository;
+using HRM.DAL.Entities;
+using HRM.DAL.Interfaces;
 using HRM.DAL.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -12,7 +13,8 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             string connection = configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<HRMContext>(options => options.UseSqlServer(connection));
-            services.AddScoped<IHumanRepository, HumanRepository>();
+            services.AddScoped<IGenericRepository<HumanEntity>, GenericRepository<HumanEntity>>();
+            services.AddScoped<IGenericRepository<CompanyEntity>, GenericRepository<CompanyEntity>>();
 
             return services;
         }
