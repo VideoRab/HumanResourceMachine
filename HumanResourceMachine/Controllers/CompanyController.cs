@@ -5,9 +5,9 @@ using HumanResourceMachine.ViewModels;
 
 namespace HumanResourceMachine.Controllers
 {
-    public class HumanController : GenericController<HumanViewModel, Human>
+    public class CompanyController : GenericController<CompanyViewModel, Company>
     {
-        public HumanController(IGenericService<Human> service, IMapper mapper) : base(service, mapper)
+        public CompanyController(IGenericService<Company> service, IMapper mapper) : base(service, mapper)
         {
 
         }

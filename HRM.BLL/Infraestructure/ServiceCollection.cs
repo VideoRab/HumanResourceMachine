@@ -1,5 +1,7 @@
-﻿using HRM.BLL.Interfaces;
+﻿ using HRM.BLL.Interfaces;
+using HRM.BLL.Models;
 using HRM.BLL.Services;
+using HRM.DAL.Entities;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -7,7 +9,8 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<IHumanService, HumanService>();
+            services.AddScoped<IGenericService<Human>, GenericService<Human, HumanEntity>>();
+            services.AddScoped<IGenericService<Company>, GenericService<Company, CompanyEntity>>();
 
             return services;
         }
