@@ -9,15 +9,8 @@ namespace HRM.DAL.Context
         public DbSet<CompanyEntity> Companies { get; set; } = null!;
 
         public HRMContext(DbContextOptions<HRMContext> options) : base(options)
-        {
+        { 
             Database.EnsureCreated();
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<HumanEntity>()
-                .HasOne(h => h.Company)
-                .WithMany(c => c.Employees);
         }
     }
 }

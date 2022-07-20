@@ -16,7 +16,7 @@ namespace HRM.DAL.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.6")
+                .HasAnnotation("ProductVersion", "6.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -70,13 +70,11 @@ namespace HRM.DAL.Migrations
 
             modelBuilder.Entity("HRM.DAL.Entities.HumanEntity", b =>
                 {
-                    b.HasOne("HRM.DAL.Entities.CompanyEntity", "Company")
+                    b.HasOne("HRM.DAL.Entities.CompanyEntity", null)
                         .WithMany("Employees")
                         .HasForeignKey("CompanyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Company");
                 });
 
             modelBuilder.Entity("HRM.DAL.Entities.CompanyEntity", b =>

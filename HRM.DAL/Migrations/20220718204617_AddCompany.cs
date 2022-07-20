@@ -4,7 +4,7 @@
 
 namespace HRM.DAL.Migrations
 {
-    public partial class Company : Migration
+    public partial class AddCompany : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
